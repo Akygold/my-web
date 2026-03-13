@@ -3,17 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <title>Welcome Eniola 💓</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* Fade-in effect for Play Music button */
-    #playMusic {
-      opacity: 0;
-      transition: opacity 0.8s ease;
-    }
-    #playMusic.show {
-      opacity: 1;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css"> 
+<style>
+  /* Fade-in effect and styling for Play Music button */
+  #playMusic {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background: #ff4a6e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 999;
+
+    /* Start hidden */
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+
+  #playMusic.show {
+    opacity: 1; /* Fade in when .show is added */
+  }
+
+  #playMusic:hover {
+    background-color: #d63384; /* Hover effect */
+  }
+</style>
 </head>
 <body>
   <div class="container">
@@ -25,7 +44,6 @@
       It'll be worth the time I promise 
     </p>
     <p class="closing">— just a lonely boy without you 🥲 </p>
-    <p style="color:red;">TEST LINE</p>
   </div>
 
   <div class="floating-hearts">
@@ -172,5 +190,34 @@
     observer.observe(memory);
   });
 </script>
+  
+<script>
+  const player = document.getElementById("bg-music");
+  const playButton = document.getElementById("playMusic");
+  const songs = ["Song2.mp3", "song1.mp3"];
+  let current = 0;
+
+  // Fade-in effect on page load
+  window.addEventListener("load", () => {
+    playButton.classList.add("show");
+  });
+
+  function playSong(index) {
+    player.src = songs[index];
+    player.play();
+  }
+
+  // Continue playlist after each song ends
+  player.addEventListener("ended", () => {
+    current = (current + 1) % songs.length;
+    playSong(current);
+  });
+
+  // Start playback only when user clicks the button
+  playButton.addEventListener("click", () => {
+    playButton.style.display = "none"; // hide button once clicked
+    playSong(current);
+  });
+</script>  
 </body>
 </html>
