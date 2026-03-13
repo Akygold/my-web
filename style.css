@@ -176,6 +176,15 @@ audio {
 .memory-text { flex: 2; }
 .memory-media { flex: 1; }
 
+/* Curved edges for images/videos globally */
+.memory img,
+.memory video {
+  max-width: 100%;
+  margin: 15px auto;
+  border-radius: 15px;   /* curved edges */
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25); /* soft shadow */
+}
+
 /* Responsive alternating text alignment */
 @media (max-width: 768px) {
   .memory {
@@ -187,11 +196,6 @@ audio {
     flex: none;
     width: 100%;
     padding: 10px;
-  }
-
-  .memory img, .memory video {
-    max-width: 100%;
-    margin: 15px auto;
   }
 
   .memory.left .memory-text {
