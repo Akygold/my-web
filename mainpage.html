@@ -188,23 +188,21 @@
 
   function playSong(index) {
     player.src = songs[index];
-    player.play().catch(() => {
-      // If autoplay is blocked, show the button
-      playButton.style.display = "block";
-    });
+    player.play();
   }
-
-  playSong(current);
 
   player.addEventListener("ended", () => {
     current = (current + 1) % songs.length;
     playSong(current);
   });
 
+  // Show button immediately (since autoplay with sound is blocked)
+  playButton.style.display = "block";
+
   // When user clicks the button, start playback
   playButton.addEventListener("click", () => {
     playButton.style.display = "none"; // hide button once clicked
-    player.play();
+    playSong(current);
   });
 
   // Scroll-trigger animations
