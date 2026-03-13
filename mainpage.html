@@ -5,57 +5,14 @@
   <title>Welcome Eniola 💓</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    body {
+    /* Fade-in effect for Play Music button */
+    #playMusic {
       opacity: 0;
-      transition: opacity 2s ease-in;
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
+      transition: opacity 0.8s ease;
     }
-    body.loaded { opacity: 1; }
-
-    .timeline {
-      margin: 50px auto;
-      max-width: 900px;
-      padding: 20px;
-    }
-    .memory {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: 80px 0;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 1.2s ease;
-    }
-    .memory.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .memory:nth-child(even) { flex-direction: row-reverse; }
-
-    .memory-text { flex: 1; padding: 20px; }
-    .memory-text h2 {
-      font-size: 2em;
-      color: #d63384;
-      margin-bottom: 20px;
-    }
-    .memory-text p { font-size: 1.1em; margin-bottom: 20px; }
-
-    .memory-media { flex: 1; text-align: center; }
-    .memory img, .memory video {
-      max-width: 90%;
-      border-radius: 20px;
-      margin: 10px auto;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      transform: scale(0.95);
-      transition: transform 1.2s ease, opacity 1.2s ease;
-    }
-    .memory.visible img,
-    .memory.visible video {
-      transform: scale(1);
+    #playMusic.show {
       opacity: 1;
     }
-    .memory video { width: 90%; height: auto; }
   </style>
 </head>
 <body>
@@ -75,15 +32,15 @@
     <span>❤️</span><span>😞</span><span>🙏</span><span>🥲</span>
   </div>
 
-  <!-- Background music playlist -->
-  <audio id="bg-music" autoplay></audio>
-  <button id="playMusic" style="display:none;">Play Music 🎵</button>
+  <!-- Background music player (hidden by CSS) -->
+  <audio id="bg-music"></audio>
+  <button id="playMusic">Play Music 🎵</button>
 
   <!-- Timeline recap -->
   <div class="timeline">
     <div class="memory left">
       <div class="memory-text">
-        <h2>Please give me a listening hear 🙏</h2>
+        <h2>Please give me a listening ear 🙏</h2>
         <p>I've not slept or eaten since it happened... 💔 <br>
           I wish there was a way you could see just a little of what's going on inside me <br>
           I've tried to accept it, if i could cope even a little i would, honestly i can't <br>
@@ -175,49 +132,48 @@
     </div>
   </div>
 
-<script>
-  window.addEventListener("load", () => {
-    document.body.classList.add("loaded");
-  });
-
-  // Music playlist with smart autoplay detection
-  const songs = ["Song2.mp3", "song1.mp3"];
-  let current = 0;
-  const player = document.getElementById("bg-music");
-  const playButton = document.getElementById("playMusic");
-
-  function playSong(index) {
-    player.src = songs[index];
-    player.play();
-  }
-
-  player.addEventListener("ended", () => {
-    current = (current + 1) % songs.length;
-    playSong(current);
-  });
-
-  // Show button immediately (since autoplay with sound is blocked)
-  playButton.style.display = "block";
-
-  // When user clicks the button, start playback
-  playButton.addEventListener("click", () => {
-    playButton.style.display = "none"; // hide button once clicked
-    playSong(current);
-  });
-
-  // Scroll-trigger animations
-  const memories = document.querySelectorAll('.memory');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+  <script>
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+      // Show the Play Music button with fade-in
+      playButton.classList.add("show");
     });
-  }, { threshold: 0.2 });
 
-  memories.forEach(memory => {
-    observer.observe(memory);
-  });
-</script>
+    // Music playlist (only plays when button is clicked)
+    const songs = ["Song2.mp3", "song1.mp3"];
+    let current = 0;
+    const player = document.getElementById("bg-music");
+    const playButton = document.getElementById("playMusic");
+
+    function playSong(index) {
+      player.src = songs[index];
+      player.play();
+    }
+
+    player.addEventListener("ended", () => {
+      current = (current + 1) % songs.length;
+      playSong(current);
+    });
+
+    // Start playback only when user clicks the button
+    playButton.addEventListener("click", () => {
+      playButton.style.display = "none"; // hide button once clicked
+      playSong(current);
+    });
+
+    // Scroll-trigger animations
+    const memories = document.querySelectorAll('.memory');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    memories.forEach(memory => {
+      observer.observe(memory);
+    });
+  </script>
 </body>
 </html>
