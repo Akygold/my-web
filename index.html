@@ -2,37 +2,211 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome</title>
+  <title>Welcome Eniola 💓</title>
+  <link rel="stylesheet" href="style.css">
   <style>
     body {
-      margin: 0;
-      height: 100vh;
+      opacity: 0;
+      transition: opacity 2s ease-in;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+    body.loaded { opacity: 1; }
+
+    .timeline {
+      margin: 50px auto;
+      max-width: 900px;
+      padding: 20px;
+    }
+    .memory {
       display: flex;
-      justify-content: center;
       align-items: center;
-      background: #000;
-      color: #fff;
-      font-family: 'Cursive', sans-serif;
+      justify-content: space-between;
+      margin: 80px 0;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1.2s ease;
     }
-    .start-button {
-      padding: 20px 40px;
+    .memory.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .memory:nth-child(even) { flex-direction: row-reverse; }
+
+    .memory-text { flex: 1; padding: 20px; }
+    .memory-text h2 {
       font-size: 2em;
-      background: #ff4a6e;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      color: white;
-      transition: background 0.3s ease;
+      color: #d63384;
+      margin-bottom: 20px;
     }
-    .start-button:hover {
-      background: #e63b5c;
+    .memory-text p { font-size: 1.1em; margin-bottom: 20px; }
+
+    .memory-media { flex: 1; text-align: center; }
+    .memory img, .memory video {
+      max-width: 90%;
+      border-radius: 20px;
+      margin: 10px auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transform: scale(0.95);
+      transition: transform 1.2s ease, opacity 1.2s ease;
     }
+    .memory.visible img,
+    .memory.visible video {
+      transform: scale(1);
+      opacity: 1;
+    }
+    .memory video { width: 90%; height: auto; }
   </style>
 </head>
 <body>
-  <button class="start-button" onclick="window.location.href='mainpage.html'">
-    Please click
-  </button>
+  <div class="container">
+    <h1 class="title">To Adepoju Eniola Oluwapelumi 💓</h1>
+    <p class="message">
+      Please don't exit <br>
+      I know I’ve hurt you, and my heart aches for all the pain I've ever caused you ❤️‍🩹 <br>
+      I have a few things to say, please listen to me <br>
+      It'll be worth the time I promise 
+    </p>
+    <p class="closing">— just a lonely boy without you 🥲 </p>
+  </div>
+
+  <div class="floating-hearts">
+    <span>❤️‍🩹</span><span>🥺</span><span>💐</span>
+    <span>❤️</span><span>😞</span><span>🙏</span><span>🥲</span>
+  </div>
+
+  <!-- Background music playlist -->
+  <audio id="bg-music" autoplay></audio>
+
+  <!-- Timeline recap -->
+  <div class="timeline">
+    <div class="memory left">
+      <div class="memory-text">
+        <h2>Please give me a listening hear 🙏</h2>
+        <p>I've not slept or eaten since it happened... 💔 <br>
+          I wish there was a way you could see just a little of what's going on inside me <br>
+          I've tried to accept it, if i could cope even a little i would, honestly i can't <br>
+          We have had conversations about times like this and I've told you and proved to you a million times that you are worth more than anything to me <br>
+          Thats something i wish you understand
+        </p>
+      </div>
+      <div class="memory-media">
+        <img src="image2.jpeg" alt="Memory photo">
+      </div>
+    </div>
+
+    <div class="memory right">
+      <div class="memory-text">
+        <p>Eniola 🥺😞 I honestly don't know why I want you this much... True love can overcome anything and i know strongly we have that
+           Maybe you have people you feel love you more than i do but believe me when i say what i have for you is real and its not because i am a lover boy <br>
+           I've never felt this type of way before <br>
+           TRUE LOVE CAN OVERCOME EVERYTHING AND WE HAVE THAT!
+        </p>
+      </div>
+      <div class="memory-media">
+        <img src="image3.jpeg" alt="Memory photo">
+        <video src="vid1.mp4" autoplay muted loop></video>
+      </div>
+    </div>
+
+    <div class="memory left">
+      <div class="memory-text">
+        <p>I am not ok without you ☹️ <br>
+           I don't care what people would say! i don't want to loose you <br>
+           I am not being less of a man, for it. I am accepting my wrongs and asking for a chance to make it right <br>
+           We have gone so far, had great moments nobody ever made us felt before ❤️‍🩹
+        </p>
+      </div>
+      <div class="memory-media">
+        <img src="image4.jpeg" alt="Memory photo">
+        <video src="vid2.mp4" autoplay muted loop></video>
+      </div>
+    </div>
+
+    <div class="memory right">
+      <div class="memory-text">
+        <p>I can't stand the thought of you loving somebody else, never hearing from you again, calling another person my nicknames, telling someone else your problems and no longer me, someone else having access to you <br>
+           The thought of that will kill me 🙁<br>
+           Do you really want to make me hurt like this...🥺😞 You are way more than just my girlfriend, you are a part of my life
+        </p>
+      </div>
+      <div class="memory-media">
+        <video src="vid3.mp4" autoplay muted loop></video>
+      </div>
+    </div>
+
+    <div class="memory left">
+      <div class="memory-text">
+        <p>I'm losing a lot more than just a beautiful girl <br>
+           you made me say "the world isn't pretty but at least i have my girlfriend 💐🥺" <br>
+           I will give you my all just to make sure you are ok ❤️‍🩹<br>
+           I consider you first in everything <br>
+           I know your worth and that is why i cannot afford to loose you 🥺💔 <br>
+           nobody knows us as much we know eachother
+        </p>
+      </div>
+      <div class="memory-media">
+        <video src="vid4.mp4" autoplay muted loop></video>
+      </div>
+    </div>
+
+    <div class="memory right">
+      <div class="memory-text">
+        <p>It might feel tiring or boring at the moment, but still we have moments we wished could last forever just imagine when we are finally free <br>
+          We have not even started, we haven't gone on dates yet, bought flowers or surprise gifts 🎁 <br>
+          We have a great future planned for us together <br>
+          And you know i would never give up on you or on us
+        </p>
+      </div>
+      <div class="memory-media">
+        <video src="vid5.mp4" autoplay muted loop></video>
+      </div>
+    </div>
+
+    <div class="memory left">
+      <div class="memory-text">
+        <p>If you have even the slightest love for me then forgive your man please 🙏💖</p>
+      </div>
+      <div class="memory-media">
+        <img src="image5.jpeg" alt="Memory photo">
+        <video src="vid6.mp4" autoplay muted loop></video>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+    });
+
+    // Music playlist
+    const songs = [
+      "Song2.mp3",
+      "song1.mp3"
+    ];
+    let current = 0;
+    const player = document.getElementById("bg-music");
+    player.src = songs[current];
+    player.play();
+    player.addEventListener("ended", () => {
+      current = (current + 1) % songs.length;
+      player.src = songs[current];
+      player.play();
+    });
+
+    // Scroll-trigger animations
+    const memories = document.querySelectorAll('.memory');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    memories.forEach(memory => {
+      observer.observe(memory);
+    });
+  </script>
 </body>
 </html>
