@@ -9,14 +9,6 @@ body {
   min-height: 100vh;
 }
 
-/* Mobile override for iPhones and smaller screens */
-@media (max-width: 768px) {
-  body {
-    background-attachment: scroll;   /* fixes iPhone issue */
-    background-position: center top; /* keeps image visible */
-  }
-}
-
 /* Black fog overlay across the background */
 body::before {
   content: "";
@@ -75,33 +67,33 @@ body::after {
   position: fixed;
   bottom: -50px;
   font-size: 2em;
-  animation: floatUp 8s infinite;
-  opacity: 0.8;
+  animation: floatUp 6s infinite;
+  opacity: 0.7;
 }
 
-/* Different positions and delays for variety */
-.floating-hearts span:nth-child(1) { left: 15%; animation-delay: 0s; }
-.floating-hearts span:nth-child(2) { left: 30%; animation-delay: 2s; }
-.floating-hearts span:nth-child(3) { left: 45%; animation-delay: 4s; }
-.floating-hearts span:nth-child(4) { left: 60%; animation-delay: 1s; }
-.floating-hearts span:nth-child(5) { left: 75%; animation-delay: 3s; }
-.floating-hearts span:nth-child(6) { left: 50%; animation-delay: 5s; }
-.floating-hearts span:nth-child(7) { left: 25%; animation-delay: 6s; }
+.floating-hearts span:nth-child(1) { left: 20%; animation-delay: 0s; }
+.floating-hearts span:nth-child(2) { left: 40%; animation-delay: 2s; }
+.floating-hearts span:nth-child(3) { left: 60%; animation-delay: 4s; }
+.floating-hearts span:nth-child(4) { left: 80%; animation-delay: 1s; }
+.floating-hearts span:nth-child(5) { left: 50%; animation-delay: 3s; }
 
 /* Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
 }
+
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.05); color: #ff4d6d; }
   100% { transform: scale(1); }
 }
+
 @keyframes slideUp {
   from { transform: translateY(50px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
+
 @keyframes floatUp {
   0% { transform: translateY(0); opacity: 0.7; }
   50% { opacity: 1; }
@@ -131,6 +123,7 @@ audio { display: none; }
   font-weight: bold;
   margin-bottom: 20px;
 }
+
 .memory-text h2 {
   font-size: 2.2em;
   font-weight: 900;
@@ -202,3 +195,19 @@ audio { display: none; }
   box-shadow: 0 10px 24px rgba(0,0,0,0.35),
               0 0 12px rgba(105, 180, 255, 0.4);
 }
+
+/* Floating hearts variety */
+.floating-hearts span {
+  position: fixed;
+  bottom: -50px;
+  font-size: 2em;
+  animation: floatUp 8s infinite;
+  opacity: 0.8;
+}
+.floating-hearts span:nth-child(1) { left: 15%; animation-delay: 0s; }
+.floating-hearts span:nth-child(2) { left: 30%; animation-delay: 2s; }
+.floating-hearts span:nth-child(3) { left: 45%; animation-delay: 4s; }
+.floating-hearts span:nth-child(4) { left: 60%; animation-delay: 1s; }
+.floating-hearts span:nth-child(5) { left: 75%; animation-delay: 3s; }
+.floating-hearts span:nth-child(6) { left: 50%; animation-delay: 5s; }
+.floating-hearts span:nth-child(7) { left: 25%; animation-delay: 6s; } 
