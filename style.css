@@ -106,10 +106,10 @@ audio {
   display: none;
 }
 
-/* Play Music button styling (larger and glowing) */
+/* Play Music button styling (bigger) */
 #playMusic {
   position: fixed;
-  bottom: 25px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   padding: 20px 40px;   /* bigger padding */
@@ -120,14 +120,10 @@ audio {
   border-radius: 12px;
   cursor: pointer;
   z-index: 999;
-  box-shadow: 0 0 20px rgba(255, 74, 110, 0.6); /* glowing effect */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 #playMusic:hover {
   background-color: #d63384;
-  transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(255, 74, 110, 0.8);
 }
 
 /* Timeline text styling */
@@ -176,12 +172,15 @@ audio {
 .memory.left { flex-direction: row; }
 .memory.right { flex-direction: row-reverse; }
 
+/* Give text more space than media */
+.memory-text { flex: 2; }
+.memory-media { flex: 1; }
+
 /* Responsive alternating text alignment */
 @media (max-width: 768px) {
   .memory {
     flex-direction: column !important;
     text-align: left;
-    margin: 40px 0; /* tighter spacing for mobile */
   }
 
   .memory-text, .memory-media {
@@ -195,7 +194,6 @@ audio {
     margin: 15px auto;
   }
 
-  /* Alternate text alignment for mobile */
   .memory.left .memory-text {
     margin-left: 10px;
     text-align: left;
@@ -212,12 +210,6 @@ audio {
 
   .memory-text h2 {
     font-size: 1.8em;
-  }
-
-  /* Smaller Play Music button on mobile */
-  #playMusic {
-    font-size: 1.4em;
-    padding: 15px 30px;
   }
 }
 
