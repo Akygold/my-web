@@ -132,48 +132,44 @@
     </div>
   </div>
 
-  <script>
-    const player = document.getElementById("bg-music");
-    const playButton = document.getElementById("playMusic");
-    const songs = ["Song2.mp3", "song1.mp3"];
-    let current = 0;
+<script>
+  const player = document.getElementById("bg-music");
+  const playButton = document.getElementById("playMusic");
+  const songs = ["Song2.mp3", "song1.mp3"];
+  let current = 0;
 
-    window.addEventListener("load", () => {
-      document.body.classList.add("loaded");
-      // Show the Play Music button with fade-in
-      playButton.classList.add("show");
+  window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+    playButton.classList.add("show"); // now works
+  });
+
+  function playSong(index) {
+    player.src = songs[index];
+    player.play();
+  }
+
+  player.addEventListener("ended", () => {
+    current = (current + 1) % songs.length;
+    playSong(current);
+  });
+
+  playButton.addEventListener("click", () => {
+    playButton.style.display = "none";
+    playSong(current);
+  });
+
+  const memories = document.querySelectorAll('.memory');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
     });
+  }, { threshold: 0.2 });
 
-    function playSong(index) {
-      player.src = songs[index];
-      player.play();
-    }
-
-    // Continue playlist after each song ends
-    player.addEventListener("ended", () => {
-      current = (current + 1) % songs.length;
-      playSong(current);
-    });
-
-    // Start playback only when user clicks the button
-    playButton.addEventListener("click", () => {
-      playButton.style.display = "none"; // hide button once clicked
-      playSong(current);
-    });
-
-    // Scroll-trigger animations
-    const memories = document.querySelectorAll('.memory');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
-
-    memories.forEach(memory => {
-      observer.observe(memory);
-    });
-  </script>
+  memories.forEach(memory => {
+    observer.observe(memory);
+  });
+</script>
 </body>
 </html>
