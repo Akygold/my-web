@@ -83,7 +83,7 @@
   <div class="timeline">
     <div class="memory left">
       <div class="memory-text">
-        <h2>Please give me a listening ear 🙏</h2>
+        <h2>Please give me a listening hear 🙏</h2>
         <p>I've not slept or eaten since it happened... 💔 <br>
           I wish there was a way you could see just a little of what's going on inside me <br>
           I've tried to accept it, if i could cope even a little i would, honestly i can't <br>
@@ -175,37 +175,51 @@
     </div>
   </div>
 
-  <script>
-    window.addEventListener("load", () => {
-      document.body.classList.add("loaded");
+<script>
+  window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+  });
+
+  // Music playlist with smart autoplay detection
+  const songs = ["Song2.mp3", "song1.mp3"];
+  let current = 0;
+  const player = document.getElementById("bg-music");
+  const playButton = document.getElementById("playMusic");
+
+  function playSong(index) {
+    player.src = songs[index];
+    player.play().catch(() => {
+      // If autoplay is blocked, show the button
+      playButton.style.display = "block";
     });
+  }
 
-    // Music playlist with smart autoplay detection
-    const songs = ["Song2.mp3", "song1.mp3"];
-    let current = 0;
-    const player = document.getElementById("bg-music");
-    const playButton = document.getElementById("playMusic");
+  playSong(current);
 
-    function playSong(index) {
-      player.src = songs[index];
-      player.play().catch(() => {
-        // If autoplay is blocked, show the button
-        playButton.style.display = "block";
-      });
-    }
-
+  player.addEventListener("ended", () => {
+    current = (current + 1) % songs.length;
     playSong(current);
+  });
 
-    player.addEventListener("ended", () => {
-      current = (current + 1) % songs.length;
-      playSong(current);
+  // When user clicks the button, start playback
+  playButton.addEventListener("click", () => {
+    playButton.style.display = "none"; // hide button once clicked
+    player.play();
+  });
+
+  // Scroll-trigger animations
+  const memories = document.querySelectorAll('.memory');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
     });
+  }, { threshold: 0.2 });
 
-    // When user clicks the button, start playback
-    playButton.addEventListener("click", () => {
-      playButton.style.display = "none"; // hide button once clicked
-      player.play();
-    });
-
-    // Scroll-trigger
-
+  memories.forEach(memory => {
+    observer.observe(memory);
+  });
+</script>
+</body>
+</html>
